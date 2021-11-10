@@ -64,39 +64,7 @@ module.exports = {
   addContact,
 };
 
-// addContact("AAAAA", "BBBBBBBBB", "CCCCCCCCC");
-
 // listContacts().then((data) => console.log(data));
 // getContactById(11);
 // removeContact(11);
-
-// // =================
-// function listContacts() {
-//   fs.readFile(contactsPath)
-//     .then((data) => console.log(data.toString()))
-//     .catch((err) => console.log(err.message));
-// }
-
-// function getContactById(contactId) {
-//   listContacts()
-//     .then((data) => {
-//       data.find((contact) => {
-//         contact.id === contactId;
-//       });
-//     })
-//     .catch((err) => console.log(err.message));
-// }
-
-// getContactById(1);
-
-//   function removeContact(contactId) {
-//     // ...твой код
-//   }
-
-//   function addContact(name, email, phone) {
-//     // ...твой код
-//   }
-
-// console.log("====================================");
-// console.log(fs);
-// console.log("====================================");
+// addContact("AAAAA", "BBBBBBBBB", "CCCCCCCCC");
