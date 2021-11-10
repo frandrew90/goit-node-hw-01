@@ -35,12 +35,13 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
           return;
         }
         console.log(contactById);
+        console.log(`The contact found successfully`);
         break;
 
       case "add":
         const newContact = await addContact(name, email, phone);
-        // const contacts = await listContacts();
         console.log(newContact);
+        console.log(`The contact was successfully added`);
         break;
 
       case "remove":
@@ -50,6 +51,7 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
           return;
         }
         console.log(removedContact);
+        console.log(`The contact was successfully removed`);
         break;
 
       default:

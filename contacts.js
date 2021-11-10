@@ -28,11 +28,12 @@ const getContactById = async (contactId) => {
 const removeContact = async (contactId) => {
   try {
     const contacts = await listContacts();
+    const removeContact = await getContactById(contactId);
     const newList = contacts.filter(
-      (contact) => Number(contact.id) !== Number(contactId)
+      (contact) => contact.id !== Number(contactId)
     );
     await fs.writeFile(contactsPath, JSON.stringify(newList));
-    return newList;
+    return removeContact;
   } catch (error) {
     console.log(error.message);
   }
@@ -62,8 +63,3 @@ module.exports = {
   removeContact,
   addContact,
 };
-
-// listContacts().then((data) => console.log(data));
-// getContactById(11);
-// removeContact(3);
-// addContact("AAAAA", "BBBBBBBBB", "CCCCCCCCC");
