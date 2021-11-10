@@ -7,7 +7,6 @@ const contactsPath = path.join(__dirname, "./db/contacts.json");
 const listContacts = async () => {
   try {
     const contacts = await fs.readFile(contactsPath, "utf8");
-    // console.log(contacts);
     return JSON.parse(contacts);
   } catch (error) {
     console.log(error.message);
@@ -20,7 +19,7 @@ const getContactById = async (contactId) => {
     const contactById = contacts.find(
       (contact) => contact.id === Number(contactId)
     );
-    return console.log(contactById);
+    return contactById;
   } catch (error) {
     console.log(error.message);
   }
@@ -29,10 +28,11 @@ const getContactById = async (contactId) => {
 const removeContact = async (contactId) => {
   try {
     const contacts = await listContacts();
-    // console.log(contacts);
-    const newList = contacts.filter((contact) => contact.id !== contactId);
+    const newList = contacts.filter(
+      (contact) => Number(contact.id) !== Number(contactId)
+    );
     await fs.writeFile(contactsPath, JSON.stringify(newList));
-    // console.log(contacts);
+    return newList;
   } catch (error) {
     console.log(error.message);
   }
@@ -50,7 +50,7 @@ const addContact = async (name, email, phone) => {
 
     contacts.push(newContact);
     await fs.writeFile(contactsPath, JSON.stringify(contacts));
-    console.log(contacts);
+    return newContact;
   } catch (error) {
     console.log(error.message);
   }
@@ -65,5 +65,5 @@ module.exports = {
 
 // listContacts().then((data) => console.log(data));
 // getContactById(11);
-// removeContact(11);
+// removeContact(3);
 // addContact("AAAAA", "BBBBBBBBB", "CCCCCCCCC");
